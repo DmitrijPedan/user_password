@@ -12,7 +12,7 @@ const createHTMLNode = (tag, attrs, inner) => {
 const getHeader = () => {
     const span = createHTMLNode ('span', [{name: 'class', value:['badge', 'badge-light']}], 'Проверка пароля');
     const h3 = createHTMLNode ('h1', [], [span]);
-    const p = createHTMLNode ('p', [], 'login: admin@gmail.com <br/> password: admin');
+    const p = createHTMLNode ('p', [], 'login: admin@gmail.com <br/> password: 00000');
     const col = createHTMLNode ('div', [{name: 'class', value:['col']}], [h3, p])
     const row = createHTMLNode ('div', [{name: 'class', value:['row']}], [col])
     const container = createHTMLNode ('div', [{name: 'class', value:['container']}], [row])
@@ -60,14 +60,6 @@ getHeader();
 getMainSection();
 getFooter();
 
-const userArray = [
-    {name: 'Дмитрий', email: 'test@gmail.com', password: '666666'},
-    {name: 'Александр', email: 'alex@gmail.com', password: '666666'},
-    {name: 'Владислав', email: 'vlad@gmail.com', password: '666666'},
-    {name: 'Анна', email: 'anna@gmail.com', password: '666666'},
-    {name: 'Администратор', email: 'admin@gmail.com', password: 'admin'}
-]
-
 const getUserMessage = (type, text) => {
     const div = createHTMLNode ('div', [{name: `class`, value:[`alert`, `alert-${type}`]}], `${text}`);
     document.getElementById('output').innerHTML = "";
@@ -76,12 +68,6 @@ const getUserMessage = (type, text) => {
         document.getElementById('output').innerHTML = "";
     }, 3000));
 }
-
-const loginForm = document.getElementById('loginForm');
-const emailInput = document.getElementById('emailInput');
-const passwordInput = document.getElementById('passwordInput');
-const submitBtn = document.getElementById('submitBtn');
-const seePassword = document.getElementById('seePassword');
 
 const removeSpacesFromString = str => str.split('').filter(el => el !== ' ').join('');
 
@@ -95,6 +81,20 @@ const isEmailValid = (email) => {
     removeSpacesFromString(email).length > 3 && at.length == 1 ? res = true : res = false ;
     return res;
 }
+
+const loginForm = document.getElementById('loginForm');
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+const submitBtn = document.getElementById('submitBtn');
+const seePassword = document.getElementById('seePassword');
+
+const userArray = [
+    {name: 'Дмитрий', email: 'test@gmail.com', password: '666666'},
+    {name: 'Александр', email: 'alex@gmail.com', password: '666666'},
+    {name: 'Владислав', email: 'vlad@gmail.com', password: '666666'},
+    {name: 'Анна', email: 'anna@gmail.com', password: '666666'},
+    {name: 'Администратор', email: 'admin@gmail.com', password: '00000'}
+];
 
 emailInput.addEventListener('input', event => {
     event.target.value = removeSpacesFromString(event.target.value);
